@@ -23,6 +23,9 @@ export class Book {
   @Column()
   publishedYear: number;
 
+  @Column()
+  authorId: number;
+
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
