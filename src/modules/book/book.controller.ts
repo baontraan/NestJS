@@ -7,7 +7,9 @@ import {
   Param,
   Post,
   Put,
+  ValidationPipe,
 } from '@nestjs/common';
+import BookRequest from './dto/BookRequest.dto.js';
 
 @Controller('/api/v1/book')
 export class BookController {
@@ -31,14 +33,17 @@ export class BookController {
 
   // ==== CREATE NEW BOOK ====
   @Post()
-  createNewBook(@Body() body: any) {
-    return this.bookService.create(body);
+  createNewBook(@Body(new ValidationPipe()) request: BookRequest) {
+    return this.bookService.create(request);
   }
 
   // ==== UPDATE BY ID ====
   @Put('/:id')
-  updateBookById(@Param('id') id: number, @Body() body: any) {
-    return this.bookService.update(id, body);
+  updateBookById(
+    @Param('id') id: number,
+    @Body(new ValidationPipe()) request: BookRequest,
+  ) {
+    return this.bookService.update(id, request);
   }
 
   // ==== DELETE BY ID ====
