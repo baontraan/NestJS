@@ -23,10 +23,10 @@ export class BookModule implements NestModule {
         path: '/api/v1/book/:id',
         method: RequestMethod.PUT,
       },
-      {
-        path: '/api/v1/book/:id',
-        method: RequestMethod.DELETE,
-      },
+      // {
+      //   path: '/api/v1/book/:id',
+      //   method: RequestMethod.DELETE,
+      // },
     );
   }
 }

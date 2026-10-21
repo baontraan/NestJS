@@ -28,7 +28,7 @@ export class BookOwnerMiddleware implements NestMiddleware {
       // Authorization
       if (!userId || book.authorId !== userId) {
         throw new ForbiddenException(
-          'You are not the author of this book. You do not have permission to update or delete it!',
+          'You are not the author of this book. You do not have permission to update it!. Use Middleware',
         );
       }
 

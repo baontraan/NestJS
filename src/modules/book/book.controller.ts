@@ -7,9 +7,11 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
 import BookRequest from './dto/BookRequest.dto.js';
+import { BookOwnerGuard } from '../../guard/bookOwner.guard.js';
 
 @Controller('/api/v1/book')
 export class BookController {
@@ -48,6 +50,7 @@ export class BookController {
 
   // ==== DELETE BY ID ====
   @Delete('/:id')
+  @UseGuards(BookOwnerGuard)
   deleteBookById(@Param('id') id: number) {
     return this.bookService.delete(id);
   }
